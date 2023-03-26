@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  nav {
+    @apply flex w-full justify-between py-2 z-50 sticky top-0 h-16 bg-mainBg shadow;
+  }
+  h1 {
+    @apply text-xl font-bold text-mainText;
+  }
+  p {
+    @apply text-xs text-mainDesc;
+  }
+  input {
+    @apply bg-gray rounded-md p-1 text-mainDesc outline-none;
+  }
+  button {
+    @apply outline-none p-1 text-sm rounded ;
+  }
+}
+
+.navigasi {
+  @apply grid w-[70%] h-screen bg-mainBg ease-in-out duration-1000 p-2 z-50;
+}
+.btn {
+@apply bg-mainBtn px-4 text-mainText
+}
