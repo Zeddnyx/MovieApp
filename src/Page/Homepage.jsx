@@ -1,4 +1,5 @@
-import { useQuery } from 'react-query';
+import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
 const fetching = async () => {
@@ -9,31 +10,37 @@ const fetching = async () => {
 };
 
 export default function HomePage() {
+  // const [results, setresults] = useState([]);
   const image = 'https://image.tmdb.org/t/p/original';
-  const { isLoading, error, data, refetch } = useQuery('data-fetch', fetching, {
-    cacheTime: 2000000,
-    enabled: false,
+  const { isLoading, isError, error, data } = useQuery({
+    queryKey: ['movie-list'],
+    queryFn: fetching,
   });
 
-  if (isLoading) return 'loading ...';
-  if (error) return 'Ups something went wrong';
+  if (isLoading) return 'Loading ...';
+  if (isError) return <p>{error.message}</p>;
+  // if (data) {
+  //   localStorage.setItem('movie', JSON.stringify(data.results));
+  //   setresults(JSON.parse(localStorage.getItem('movie')));
+  // }
+  const results = data.results;
 
   return (
     <>
       <div className="grid gap-4">
         <img
-          className="w-full h-40"
-          src={image + data.results.poster_path}
-          alt={data.results.title}
+          className="w-full h-60 object-cover"
+          src={image + results[2].poster_path}
+          alt={results.title}
         />
-        <div className="grid grid-cols-4 px-2 gap-2">
-          {data.results.slice(0, 12).map((data) => {
+        <div className="grid grid-cols-4 px-2 place-items-center gap-2">
+          {results.slice(0, 12).map((data) => {
             return (
               <div key={data.id}>
                 <Link to={`/detail/${data.id}`}>
                   <img
-                    onClick={refetch}
-                    className="rounded"
+                    // onClick={refetch}
+                    className="rounded w-36"
                     src={image + data.poster_path}
                     alt={data.title}
                   />
@@ -44,14 +51,14 @@ export default function HomePage() {
         </div>
 
         <div className="px-2 grid gap-8">
-          {data.results.slice(0, 15).map((data) => {
+          {results.slice(0, 15).map((data) => {
             return (
               <div
                 key={data.id}
                 className="border-b border-mainDesc pb-5 grid gap-1"
               >
                 <Link to={`/detail/${data.id}`}>
-                  <h1 onClick={refetch}>{data.title}</h1>
+                  <h1 /* onClick={refetch} */>{data.title}</h1>
                 </Link>
                 <span className="flex gap-5">
                   <p>{data.release_date}</p>
@@ -60,14 +67,11 @@ export default function HomePage() {
                 </span>
                 <div className="flex items-start gap-2">
                   <img
-                    className="w-40 rounded"
+                    className="w-48 lg:w-72 rounded"
                     src={image + data.poster_path}
                     alt={data.title}
                   />
-                  <span className="flex flex-col gap-5 items-start">
-                    <p>{data.overview}</p>
-                    <button className="btn">Download</button>
-                  </span>
+                  <p className='pr-5 md:pr-20 lg:pr-36 lg:text-md'>{data.overview}</p>
                 </div>
               </div>
             );
