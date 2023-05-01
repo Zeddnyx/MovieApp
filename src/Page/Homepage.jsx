@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import Loading from '../Components/Layouts/Loading'
 
 const fetching = async () => {
   const url =
@@ -17,30 +18,27 @@ export default function HomePage() {
     queryFn: fetching,
   });
 
-  if (isLoading) return 'Loading ...';
+  if (isLoading) return <Loading />;
   if (isError) return <p>{error.message}</p>;
-  // if (data) {
-  //   localStorage.setItem('movie', JSON.stringify(data.results));
-  //   setresults(JSON.parse(localStorage.getItem('movie')));
-  // }
   const results = data.results;
 
   return (
     <>
       <div className="grid gap-4">
         <img
-          className="w-full h-60 object-cover"
+          className="w-full h-80 object-cover object-center"
           src={image + results[2].poster_path}
           alt={results.title}
         />
-        <div className="grid grid-cols-4 px-2 place-items-center gap-2">
+
+        <div className="grid grid-cols-4 px-5 place-items-center gap-2 md:gap-10">
           {results.slice(0, 12).map((data) => {
             return (
               <div key={data.id}>
                 <Link to={`/detail/${data.id}`}>
                   <img
                     // onClick={refetch}
-                    className="rounded w-36"
+                    className="rounded w-36 md:w-full"
                     src={image + data.poster_path}
                     alt={data.title}
                   />
@@ -50,7 +48,7 @@ export default function HomePage() {
           })}
         </div>
 
-        <div className="px-2 grid gap-8">
+        <div className="px-5 grid gap-8">
           {results.slice(0, 15).map((data) => {
             return (
               <div

@@ -4,6 +4,7 @@ import HomePage from './Page/Homepage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Detail from './Page/Detail';
 import Nav from './Components/Layouts/Nav';
+import Search from './Page/Search'
 
 function App() {
   const query = new QueryClient();
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/search/:id" element={<Search/>} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
