@@ -5,7 +5,7 @@ import Loading from '../Components/Layouts/Loading'
 
 const fetching = async () => {
   const url =
-    'https://api.themoviedb.org/3/movie/popular?api_key=5177f8c79712fa6db85b515df93bc4b6';
+    `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}`;
   const data = await fetch(`${url}`);
   return data.json();
 };

@@ -8,7 +8,7 @@ export default function Detail() {
   const image = 'https://image.tmdb.org/t/p/original';
   const detailMovie = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=5177f8c79712fa6db85b515df93bc4b6`,
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_API_KEY}`,
     );
     return data.json();
   };
