@@ -22,7 +22,7 @@ export default function Detail() {
   if (isError) return <p>{error.message}</p>;
 
   return (
-    <section className="grid gap-4">
+    <section className="grid gap-4 mt-20">
       <h1>{data.original_title}</h1>
       <div className="flex gap-2 items-center">
         {data.genres.map((genres, id) => (

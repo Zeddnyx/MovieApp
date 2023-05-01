@@ -24,8 +24,8 @@ export default function Search() {
     return <h1>Nothing Found "{id}"</h1>;
 
   return (
-    <section className="mx-auto max-w-full">
-      <div className="px-2 grid gap-8">
+    <section>
+      <div className="px-2 grid gap-8 mt-20">
         {data.results.map((data) => {
           return (
             <div

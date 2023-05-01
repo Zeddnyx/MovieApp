@@ -22,7 +22,7 @@
     @apply outline-none p-1 text-sm rounded;
   }
   section {
-    @apply px-5 pt-10;
+    @apply px-5 mt-10;
   }
 }
 
