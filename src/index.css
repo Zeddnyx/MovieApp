@@ -4,10 +4,13 @@
 
 @layer base {
   nav {
-    @apply flex w-full justify-between items-center py-2 z-50 h-16 bg-mainBg shadow fixed top-0 left-0 px-5;
+    @apply px-5 md:px-10 lg:px-16 fixed top-0 left-0 z-50 flex justify-between items-center h-12 w-full bg-mainBg backdrop-filter backdrop-blur-sm bg-opacity-80;
   }
   h1 {
     @apply text-xl font-bold text-mainText;
+  }
+  h2 {
+    @apply text-lg md:text-2xl xl:text-4xl font-bold text-mainText;
   }
   h3 {
     @apply text-base font-bold text-mainText;
@@ -31,4 +34,15 @@
 }
 .btn {
   @apply bg-mainBtn px-4 text-mainText;
+}
+
+/* SLider */
+.slider-auto {
+  @apply w-full h-full flex justify-center items-center object-center object-cover overflow-hidden transition-all duration-500 ease-in-out
+}
+.slider-image-bg2 {
+  @apply absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-mainBg via-transparent to-transparent
+}
+.slider-text {
+  @apply absolute left-5 bottom-5 leading-tight w-96
 }

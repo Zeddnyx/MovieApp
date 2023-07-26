@@ -1,12 +1,10 @@
-import { AiFillStar } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 export default function CardMovie({ results }) {
   const image = 'https://image.tmdb.org/t/p/original/';
   const placeHolder = <div className="h-full w-48 lg:w-60"></div>;
   return (
-    <section>
-      <div className="px-5 grid md:grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-2 gap-5 px-5 lg:px-10">
         {results.map((data) => {
           return (
             <div
@@ -16,21 +14,9 @@ export default function CardMovie({ results }) {
               <Link to={`/detail/${data.id}`}>
                 <h1 /* onClick={refetch} */>{data.title}</h1>
               </Link>
-              <span className="flex gap-5 items-center">
-                <p>
-                  {data.realease_date
-                    ? data.release_date.split('-')[0]
-                    : 'Unknown'}
-                </p>
-                <p>{data.adults == false ? 'ABO' : '18+'}</p>
-                <p className="flex gap-1">
-                  <AiFillStar />
-                  {data.vote_average !== 0 ? data.vote_average : 'N/A'}
-                </p>
-              </span>
               <div className="flex items-start gap-2">
                 <img
-                  className="w-48 lg:w-60 rounded"
+                  className="w-48 lg:w-60 rounded bg-mainDesc"
                   src={
                     data.poster_path !== null || undefined
                       ? image + data.poster_path
@@ -44,6 +30,5 @@ export default function CardMovie({ results }) {
           );
         })}
       </div>
-    </section>
   );
 }

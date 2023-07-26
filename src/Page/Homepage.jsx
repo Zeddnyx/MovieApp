@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import Loading from '../Components/Layouts/Loading';
 import { getMovie } from '../services/http';
 import CardMovie from '../Components/CardMovie';
+import Slider from '../Components/Slider';
 
 export default function HomePage() {
   const image = 'https://image.tmdb.org/t/p/original';
   const { isLoading, isError, error, data } = useQuery({
-    queryKey: ['movie-list'],
+    queryKey: ['popular'],
     queryFn: getMovie,
   });
 
@@ -17,17 +18,13 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="grid gap-4 mt-20">
-        <div className="relative w-full h-full">
-          <img
-            className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-gray-900 via-transparent to-transparent rounded-xl"
-            src={image + results[2].poster_path}
-            alt={results.title}
-          />
+      <div className="grid gap-4">
+        <div className="relative w-full h-[700px] bg-mainDesc">
+          <Slider path={image} slider={results.slice(0, 4)} />
         </div>
 
         <div className="grid grid-cols-4 px-5 place-items-center gap-2 md:gap-10">
-          {results.slice(0, 12).map((data) => {
+          {results.slice(4, 8).map((data) => {
             return (
               <div key={data.id}>
                 <Link to={`/detail/${data.id}`}>

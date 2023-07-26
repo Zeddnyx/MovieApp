@@ -10,7 +10,6 @@ export default function Nav() {
   const handleClick = (e) => {
     e.preventDefault();
     setSearch(query);
-    setMenu(!menu);
   };
 
   return (

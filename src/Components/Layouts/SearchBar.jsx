@@ -3,22 +3,22 @@ import { Link } from 'react-router-dom';
 import { BiSearchAlt2 } from 'react-icons/bi';
 
 export default function SearchBar({ search, setQuery, handleClick }) {
+  const handleQuery = (e) => {
+    setQuery(e);
+  };
   return (
-    <form className="flex w-full items-end justify-end relative">
+    <form className="flex w-full items-center relative">
       <input
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => handleQuery(e.target.value)}
         type="text"
         className="w-full text-sm"
         placeholder="Find Movie"
       />
-      <Link
-        to={`/search/${search}`}
-        className="bg-gray absolute right-0 rounded-md text-mainDesc"
-      >
-        <button onClick={handleClick} type="submit">
-          <BiSearchAlt2 size="20" />
-        </button>
-      </Link>
+      <button onClick={handleClick} type="submit" className="text-mainText">
+        <Link to={`/search/${search}`}>
+          <BiSearchAlt2 size="25" />
+        </Link>
+      </button>
     </form>
   );
 }
