@@ -4,7 +4,7 @@
 
 @layer base {
   nav {
-    @apply flex w-full justify-between py-2 z-50 h-16 bg-mainBg shadow fixed top-0 left-0 px-5;
+    @apply flex w-full justify-between items-center py-2 z-50 h-16 bg-mainBg shadow fixed top-0 left-0 px-5;
   }
   h1 {
     @apply text-xl font-bold text-mainText;
