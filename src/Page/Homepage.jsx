@@ -1,20 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import Loading from '../Components/Layouts/Loading';
-import { getMovie } from '../services/http';
 import CardMovie from '../Components/CardMovie';
 import Slider from '../Components/Slider';
+import { getMovies } from '../services/service';
 
 export default function HomePage() {
   const image = 'https://image.tmdb.org/t/p/original';
-  const { isLoading, isError, error, data } = useQuery({
-    queryKey: ['popular'],
-    queryFn: getMovie,
-  });
 
-  if (isLoading) return <Loading />;
-  if (isError) return <p>{error.message}</p>;
-  const results = data.results;
+  const { loading, isErr, err, datas } = getMovies();
+  if (loading) return <Loading />;
+  if (isErr) return <p>{err.message}</p>;
+  const results = datas.results;
 
   return (
     <>
@@ -29,7 +25,6 @@ export default function HomePage() {
               <div key={data.id}>
                 <Link to={`/detail/${data.id}`}>
                   <img
-                    // onClick={refetch}
                     className="rounded w-36 md:w-full"
                     src={image + data.poster_path}
                     alt={data.title}

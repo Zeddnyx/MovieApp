@@ -1,17 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import Loading from '../Components/Layouts/Loading';
-import { getSearchMovie } from '../services/http';
 import CardMovie from '../Components/CardMovie';
+import { getSearchMovie } from '../services/service';
 
 export default function Search() {
   const { id } = useParams();
-  const { isLoading, isError, error, data } = useQuery({
-    queryKey: ['search'],
-    queryFn: () => getSearchMovie(id),
-  });
 
+  const { isLoading, isError, error, data } = getSearchMovie(id);
   if (isLoading) return <Loading />;
   if (isError) return <p>{error.message}</p>;
   if (!isError && !isLoading && data.results.length === 0)
