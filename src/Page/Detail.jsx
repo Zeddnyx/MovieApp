@@ -1,5 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import { AiFillStar } from 'react-icons/ai';
+import {
+  AiFillStar,
+  AiTwotoneFolder,
+  AiOutlineBorderlessTable,
+} from 'react-icons/ai';
+import { BiTimeFive } from 'react-icons/bi';
+import { BsFillChatSquareQuoteFill } from 'react-icons/bs';
+import { FaLanguage } from 'react-icons/fa';
+import { CgStudio } from 'react-icons/cg';
+import { MdNewReleases } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import Loading from '../Components/Layouts/Loading';
 import { getDetailMovie, getMovie } from '../services/http';
@@ -30,45 +39,58 @@ export default function Detail() {
             <h3 className="text-mainDesc">{data.original_title}</h3>
           </span>
           <span className="flex gap-5 items-center">
-            <p>
-              {data.release_date
-                ? data.release_date.split('-').join(' ')
-                : 'Unknown'}
-            </p>
+            <span className="flex items-center gap-1">
+              <BiTimeFive />
+              <p>
+                {data.release_date
+                  ? data.release_date.split('-').join(' ')
+                  : 'Unknown'}
+              </p>
+            </span>
             <p>{data.adults == false ? 'ABO' : '18+'}</p>
-            <p className="flex gap-1">
+            <p className="flex gap-1 items-center">
               <AiFillStar />
               {data.vote_average !== 0 ? data.vote_average : 'N/A'}
             </p>
           </span>
           <div className="flex flex-col gap-2">
-            <span className="flex gap-2">
-              <p>Genre:</p>
+            <span className="flex gap-1">
+              <AiTwotoneFolder />
               {data.genres?.map((genres, id) => (
                 <p key={id}>{genres.name}</p>
               ))}
             </span>
-            <span>
-              <p>Languages: {data.spoken_languages[0]?.english_name}</p>
+            <span className="flex gap-1 items-center">
+              <FaLanguage />
+              <p> {data.spoken_languages[0]?.english_name}</p>
             </span>
-            <p>Status: {data.status}</p>
-            <p>Popularity: {data.popularity}</p>
+            <span className="flex gap-1 items-center">
+              <MdNewReleases />
+              <p>{data.status}</p>
+            </span>
+            <span className="flex gap-1 items-center">
+              <AiOutlineBorderlessTable />
+              <p>{data.popularity}</p>
+            </span>
             {data.production_companies && (
-              <span className="flex gap-2 items-center flex-wrap">
-                <p>Company:</p>
+              <span className="flex gap-1 items-center flex-wrap">
+                <CgStudio />
                 {data.production_companies?.map((item) => (
                   <p key={item.id}>{item.name}</p>
                 ))}
               </span>
             )}
-            {data.tagline && <p>Quote: {data.tagline}</p>}
+            {data.tagline && 
+              <span className="flex gap-1 items-center">
+                <BsFillChatSquareQuoteFill />
+                <p>{data.tagline}</p>
+                </span>}
           </div>
           <div className="md:text-base lg:text-lg">
-            <p>Synopsis:</p>
             <p>{data.overview}</p>
           </div>
 
-          <span className="w-28 h-28 grid grid-cols-3 gap-5">
+          <span className="w-full h-28 grid grid-cols-3 gap-5">
             {data.production_companies?.map(
               (company) =>
                 company.logo_path && (
