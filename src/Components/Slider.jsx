@@ -15,7 +15,7 @@ export default function Slider({ slider, path }) {
     <div className="slider-auto">
       <div className="slider-image-bg2"></div>
       <div className="slider-text">
-        <h2>{slider[index].title}</h2>
+        <h1>{slider[index].title}</h1>
         <ShortInfo data={slider[index]} />
         <p className="text-mainText h-12 overflow-hidden md:text-base">
           {slider[index].overview}
