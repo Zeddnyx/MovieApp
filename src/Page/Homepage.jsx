@@ -20,11 +20,11 @@ export default function HomePage() {
     <>
       <div className="grid gap-4">
         <div className="relative w-full h-[700px] bg-mainDesc">
-          <Slider path={image} slider={results.slice(0, 4)} />
+          <Slider path={image} slider={results?.slice(0, 4)} />
         </div>
 
         <div className="grid grid-cols-4 px-5 place-items-center gap-2 md:gap-10">
-          {results.slice(4, 8).map((data) => {
+          {results?.slice(4, 8).map((data) => {
             return (
               <div key={data.id}>
                 <Link to={`/detail/${data.id}`}>

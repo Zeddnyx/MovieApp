@@ -53,12 +53,14 @@ export default function Detail() {
             </span>
             <p>Status: {data.status}</p>
             <p>Popularity: {data.popularity}</p>
-            <span className="flex gap-2 items-center flex-wrap">
-              <p>Company:</p>
-              {data.production_companies?.map((item) => (
-                <p key={item.id}>{item.name}</p>
-              ))}
-            </span>
+            {data.production_companies && (
+              <span className="flex gap-2 items-center flex-wrap">
+                <p>Company:</p>
+                {data.production_companies?.map((item) => (
+                  <p key={item.id}>{item.name}</p>
+                ))}
+              </span>
+            )}
             {data.tagline && <p>Quote: {data.tagline}</p>}
           </div>
           <div className="md:text-base lg:text-lg">
@@ -66,7 +68,7 @@ export default function Detail() {
             <p>{data.overview}</p>
           </div>
 
-          <span className="w-28 h-28 flex gap-5">
+          <span className="w-28 h-28 grid grid-cols-3 gap-5">
             {data.production_companies?.map(
               (company) =>
                 company.logo_path && (

@@ -7,7 +7,13 @@ import Nav from './Components/Layouts/Nav';
 import Search from './Page/Search'
 
 function App() {
-  const query = new QueryClient();
+  const query = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
   return (
     <QueryClientProvider client={query}>
       <BrowserRouter>
