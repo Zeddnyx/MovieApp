@@ -13,12 +13,12 @@ export default function ShortInfo({ data }) {
         </p>
       </span>
       <p>{data.adults == false ? 'ABO' : '18+'}</p>
-      <p className="flex gap-1 items-center">
-        <p className="text-[#FABD2F]">
+      <span className="flex gap-1 items-center">
+        <span className="text-[#FABD2F]">
           <AiFillStar />
-        </p>
-        {data.vote_average !== 0 ? data.vote_average : 'N/A'}
-      </p>
+        </span>
+        <p>{data.vote_average !== 0 ? data.vote_average : 'N/A'}</p>
+      </span>
     </span>
   );
 }

@@ -5,7 +5,7 @@ export default function CardMovie({ results }) {
   const image = 'https://image.tmdb.org/t/p/original/';
   const placeHolder = <div className="h-full w-48 lg:w-60"></div>;
   return (
-    <div className="grid grid-cols-1 gap-5 px-5 lg:px-10">
+    <div className="grid grid-cols-1 gap-5 px-5">
       {results.map((data) => {
         return (
           <div

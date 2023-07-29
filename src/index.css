@@ -4,7 +4,7 @@
 
 @layer base {
   nav {
-    @apply px-5 md:px-10 lg:px-16 fixed top-0 left-0 z-50 flex justify-between items-center h-12 w-full bg-mainBg backdrop-filter backdrop-blur-sm bg-opacity-80;
+    @apply px-5 fixed top-0 left-0 z-50 flex justify-between items-center h-12 w-full bg-mainBg backdrop-filter backdrop-blur-sm bg-opacity-80;
   }
   h1 {
     @apply text-2xl font-bold text-mainText;
@@ -19,7 +19,7 @@
     @apply text-xs text-mainDesc;
   }
   input {
-    @apply bg-gray rounded-md p-1 text-mainDesc outline-none;
+    @apply bg-gray text-mainDesc outline-none;
   }
   button {
     @apply outline-none p-1 text-sm rounded;

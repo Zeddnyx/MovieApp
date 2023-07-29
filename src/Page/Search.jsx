@@ -15,7 +15,7 @@ export default function Search() {
 
   return (
     <div className="mt-20 grid gap-3">
-      <div className="pl-5 md:pl-10">
+      <div className="pl-5 ">
         <h1>Results for "{id}"</h1>
       </div>
       <CardMovie results={data.results} />
