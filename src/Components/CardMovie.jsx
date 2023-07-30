@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import ShortInfo from './ShortInfo';
 
-export default function CardMovie({ results }) {
+export default function CardMovie({ data }) {
   const image = 'https://image.tmdb.org/t/p/original/';
   const placeHolder = <div className="h-full w-48 lg:w-60"></div>;
   return (
     <div className="grid grid-cols-1 gap-5 px-5">
-      {results.map((data) => {
+      {data?.map((data) => {
         return (
           <div
             key={data.id}

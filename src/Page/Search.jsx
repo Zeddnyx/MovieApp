@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../Components/Layouts/Loading';
-import CardMovie from '../Components/CardMovie';
 import { getSearchMovie } from '../services/service';
+import Pagination from '../Components/Pagination';
 
 export default function Search() {
   const { id } = useParams();
@@ -18,7 +18,7 @@ export default function Search() {
       <div className="pl-5 ">
         <h1>Results for "{id}"</h1>
       </div>
-      <CardMovie results={data.results} />
+      <Pagination data={data.results} />
     </div>
   );
 }

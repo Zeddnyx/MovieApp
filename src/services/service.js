@@ -13,7 +13,7 @@ export const getMovies = () => {
 
 export const getDetailMovie = (id) => {
   const { isLoading, isError, error, data } = useQuery({
-    queryKey: ['detail'],
+    queryKey: ['detail', id],
     queryFn: () => httpDetailMovie(id),
   });
 

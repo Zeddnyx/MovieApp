@@ -3,6 +3,7 @@ import Loading from '../Components/Layouts/Loading';
 import CardMovie from '../Components/CardMovie';
 import Slider from '../Components/Slider';
 import { getMovies } from '../services/service';
+import Pagination from '../Components/Pagination';
 
 export default function HomePage() {
   const image = 'https://image.tmdb.org/t/p/original';
@@ -35,7 +36,7 @@ export default function HomePage() {
           })}
         </div>
 
-        <CardMovie results={results} />
+        <Pagination data={results} />
       </div>
     </>
   );

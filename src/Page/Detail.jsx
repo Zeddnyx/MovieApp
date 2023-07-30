@@ -16,7 +16,7 @@ export default function Detail() {
   const { isLoading, isError, error, data } = getDetailMovie(id);
   if (isLoading) return <Loading />;
   if (isError) return <p>{error.message}</p>;
-  console.log("render det")
+  console.log('render det');
 
   const popular = data.popularity.toString();
   const releaseStyle =
@@ -25,12 +25,12 @@ export default function Detail() {
     popular.length <= 2
       ? 'text-red-500'
       : popular.length <= 4
-        ? 'text-gray-500'
-        : popular.length <= 5
-          ? 'text-yellow-500'
-          : popular.length <= 6
-            ? 'text-blue-500'
-            : 'text-green-500';
+      ? 'text-gray-500'
+      : popular.length <= 5
+      ? 'text-yellow-500'
+      : popular.length <= 6
+      ? 'text-blue-500'
+      : 'text-green-500';
 
   return (
     <section className="max-w-5xl gap-4 mt-28 mx-auto">
@@ -43,13 +43,17 @@ export default function Detail() {
           <ShortInfo data={data} />
           <div className="flex flex-col gap-2">
             <span className="flex gap-1">
-              <BsCardImage />
+              <span className='text-purple-500'>
+                <BsCardImage />
+              </span>
               <p>
                 <a href={image + data.poster_path}>Click here</a>
               </p>
             </span>
             <span className="flex gap-1">
+              <span className='text-yellow-500'>
               <AiTwotoneFolder />
+              </span>
               {data.genres?.map((genres, id) => (
                 <p key={id}>{genres.name}</p>
               ))}
@@ -59,12 +63,16 @@ export default function Detail() {
               <p> {data.spoken_languages[0]?.english_name}</p>
             </span>
             <span className="flex gap-1 items-center">
-              <MdNewReleases />
-              <p className={releaseStyle}>{data.status}</p>
+              <span className={releaseStyle}>
+                <MdNewReleases />
+              </span>
+              <p>{data.status}</p>
             </span>
             <span className="flex gap-1 items-center">
-              <AiOutlineBorderlessTable />
-              <p className={popularStyle}>{popular}</p>
+              <span className={popularStyle}>
+                <AiOutlineBorderlessTable />
+              </span>
+              <p>{popular}</p>
             </span>
             {data.production_companies && (
               <span className="flex gap-1 items-center flex-wrap">
