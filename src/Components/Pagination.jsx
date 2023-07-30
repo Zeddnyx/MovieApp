@@ -24,7 +24,7 @@ export default function Pagination({ data }) {
       <CardMovie data={pages} />
 
       {/* pagination */}
-      <div className="flex justify-center pt-5 gap-3">
+      <div className="flex justify-center pt-5 gap-3 text-mainDesc">
         {/* Previous page button */}
         <button
           disabled={currentPage === 1}
@@ -41,7 +41,7 @@ export default function Pagination({ data }) {
             className={
               currentPage === index + 1
                 ? 'text-mainText font-bold text-base'
-                : 'text-textDesc text-xs'
+                : 'text-mainDesc text-xs'
             }
           >
             {index + 1}
