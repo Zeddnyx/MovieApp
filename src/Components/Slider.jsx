@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ShortInfo from './ShortInfo';
+import { Link } from 'react-router-dom';
 
 export default function Slider({ slider, path }) {
   const [index, setIndex] = useState(0);
@@ -15,7 +16,9 @@ export default function Slider({ slider, path }) {
     <div className="slider-auto">
       <div className="slider-image-bg2"></div>
       <div className="slider-text">
-        <h1>{slider[index].title}</h1>
+        <Link to={`/detail/${slider[index].id}`}>
+          <h1>{slider[index].title}</h1>
+        </Link>
         <ShortInfo data={slider[index]} />
         <p className="text-mainText h-12 overflow-hidden md:text-base">
           {slider[index].overview}

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import Loading from '../Components/Layouts/Loading';
-import CardMovie from '../Components/CardMovie';
 import Slider from '../Components/Slider';
 import { getMovies } from '../services/service';
 import Pagination from '../Components/Pagination';

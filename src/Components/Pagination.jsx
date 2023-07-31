@@ -9,7 +9,6 @@ export default function Pagination({ data }) {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const pages = data?.slice(indexOfFirstItem, indexOfLastItem);
-  console.log(pages,data)
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(data?.length / itemsPerPage);
@@ -29,8 +28,9 @@ export default function Pagination({ data }) {
         <button
           disabled={currentPage === 1}
           onClick={() => handlePageChange(currentPage - 1)}
+          className="text-mainDesc"
         >
-          Previous
+          Prev
         </button>
 
         {/* Page numbers */}
@@ -52,6 +52,7 @@ export default function Pagination({ data }) {
         <button
           disabled={currentPage === totalPages}
           onClick={() => handlePageChange(currentPage + 1)}
+          className="text-mainDesc"
         >
           Next
         </button>
